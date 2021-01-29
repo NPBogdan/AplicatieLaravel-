@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Object extends Model
 {
     use HasFactory;
+    public function attributes(){
+        return $this->hasMany(Attribute::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }
