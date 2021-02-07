@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AttributeController;
+use App\Http\Controllers\ToolController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,5 +22,8 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::resource('tools',ToolController::class);
+Route::resource('attributes',AttributeController::class);
 
 require __DIR__.'/auth.php';

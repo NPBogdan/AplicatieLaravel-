@@ -9,6 +9,6 @@ class Attribute extends Model
 {
     use HasFactory;
     public function object(){
-        return $this->belongsTo(Object::class);
+        return $this->belongsTo(Tool::class);
     }
 }

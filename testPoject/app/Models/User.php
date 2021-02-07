@@ -42,6 +42,10 @@ class User extends Authenticatable
     ];
 
     public function objects(){
-        return $this->hasMany(Object::class);
+        return $this->hasMany(Tool::class);
+    }
+
+    public function isAdministrator() {
+        return $this->is_admin;
     }
 }

@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Attribute;
 use App\Models\Tool;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Http;
 
-class AttributeController extends Controller
+class ToolController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Tool::class, 'tools');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +20,7 @@ class AttributeController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -27,9 +30,7 @@ class AttributeController extends Controller
      */
     public function create()
     {
-        $response = Http::get('http://api.ipify.org');
-        dd($response->body());
-        return view("attribute");
+        //
     }
 
     /**
@@ -40,20 +41,12 @@ class AttributeController extends Controller
      */
     public function store(Request $request)
     {
-        $user = Auth::user();
-        $object_id = Tool::where('user_id', $user->id)->orderBy('id','desc')->first(); //Get the id of the last object
+        $tool = new Tool();
+        $tool->name = $request->tool;
+        $tool->user_id = Auth::user()->id;
+        $tool->save();
 
-        $attribute = new Attribute();
-        $attribute->object_id = $object_id->id;
-        $attribute->name = $request->name;
-        $attribute->company = $request->company;
-        $attribute->representative_name = $request->representative_name;
-        $attribute->nr_telephone_representative = $request->nr_telephone_representative;
-        $attribute->validity_start_date = $request->validity_start_date;
-        $attribute->expiration_date = $request->expiration_date;
-        $attribute->active = 1; //Default is 1
-        $attribute->save();
-        return back();
+        return redirect()->action([AttributeController::class, 'create'])->with('object_id',);
     }
 
     /**
