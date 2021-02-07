@@ -17,7 +17,11 @@ class AttributeController extends Controller
      */
     public function index()
     {
-        //
+        $response = Http::get('http://api.ipify.org');
+        //dd($response->body());
+        $userId = Auth::user()->id;
+        $userObjects = Tool::where('user_id',$userId)->get();
+        dd($userObjects);
     }
 
     /**
@@ -27,9 +31,7 @@ class AttributeController extends Controller
      */
     public function create()
     {
-        $response = Http::get('http://api.ipify.org');
-        dd($response->body());
-        return view("attribute");
+        return view("attribute",compact());
     }
 
     /**

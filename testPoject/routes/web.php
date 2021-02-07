@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AttributeController;
 use App\Http\Controllers\ToolController;
+use App\Models\Tool;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,7 +22,13 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $user = Auth::user();
+    if($user->isAdministrator()){
+        $userObjects = Tool::all();
+        return view('dashboard',compact('userObjects'));
+    }
+    $userObjects = Tool::where('user_id', $user->id)->get();
+    return view('dashboard',compact('userObjects'));
 })->middleware(['auth'])->name('dashboard');
 
 Route::resource('tools',ToolController::class);
