@@ -4,6 +4,7 @@ use App\Http\Controllers\AttributeController;
 use App\Http\Controllers\ToolController;
 use App\Models\Tool;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,13 +23,16 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
+    //Ajax call to address
+    $response = Http::get('http://api.ipify.org')->body();
+    //Check if the current user is admin
     $user = Auth::user();
     if($user->isAdministrator()){
         $userObjects = Tool::all();
-        return view('dashboard',compact('userObjects'));
+    } else {
+        $userObjects = Tool::where('user_id', $user->id)->get();
     }
-    $userObjects = Tool::where('user_id', $user->id)->get();
-    return view('dashboard',compact('userObjects'));
+    return view('dashboard',compact(['userObjects','response']));
 })->middleware(['auth'])->name('dashboard');
 
 Route::resource('tools',ToolController::class);
