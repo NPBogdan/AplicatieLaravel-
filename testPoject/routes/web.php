@@ -6,6 +6,8 @@ use App\Models\Tool;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
+use App\Models\Attribute;
+use App\Notifications\AttributeExpired;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,5 +39,17 @@ Route::get('/dashboard', function () {
 
 Route::resource('tools',ToolController::class);
 Route::resource('attributes',AttributeController::class);
+
+
+//Route::get('/test', function () {
+//    $attribute = Attribute::find(1);
+//
+//    return (new AttributeExpired($attribute))->toMail($attribute->user_id);
+//});
+
+
+
+
+
 
 require __DIR__.'/auth.php';

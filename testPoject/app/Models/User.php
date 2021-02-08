@@ -44,7 +44,7 @@ class User extends Authenticatable
     public function objects(){
         return $this->hasMany(Tool::class);
     }
-
+    //Check if this user is admin
     public function isAdministrator() {
         return $this->is_admin;
     }
