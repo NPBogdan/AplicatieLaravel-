@@ -5,7 +5,9 @@
         </h2>
     </x-slot>
 
+    <!-- Ajax call-->
     {{$response}}
+
     <div class="py-12">
         <div class="grid grid-cols-2">
             <div class="max-w-4xl sm:px-6 lg:px-8">
@@ -21,7 +23,6 @@
                         </form>
                     </div>
                 </div>
-
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <table class="border-collapse border border-green-800 ">
                         <tbody>

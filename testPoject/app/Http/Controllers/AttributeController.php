@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreAttributeRequest;
 use App\Models\Attribute;
 use App\Models\Tool;
 use Illuminate\Http\Request;
@@ -36,7 +37,7 @@ class AttributeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreAttributeRequest $request)
     {
         $user = Auth::user();
         $object_id = Tool::where('user_id', $user->id)->orderBy('id','desc')->first(); //Get the id of the last object
