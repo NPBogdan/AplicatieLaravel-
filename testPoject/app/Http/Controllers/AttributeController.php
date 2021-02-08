@@ -27,7 +27,7 @@ class AttributeController extends Controller
      */
     public function create()
     {
-        return view("attribute",compact());
+        return view("attribute");
     }
 
     /**
