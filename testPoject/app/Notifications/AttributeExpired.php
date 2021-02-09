@@ -11,15 +11,16 @@ use Illuminate\Support\Facades\Auth;
 class AttributeExpired extends Notification
 {
     use Queueable;
+    protected $data;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($data)
     {
-        //
+        $this->data = $data;
     }
 
     /**
@@ -43,7 +44,15 @@ class AttributeExpired extends Notification
     {
         return (new MailMessage)
             ->greeting('Hello!')
-            ->line('Your attribute has expired!');
+            ->line('Your attribute ' . $this->data['name'] . ' from company ' . $this->data['company'] . ' has expired!')
+            ->subject('Attribute ' . $this->data['name'] . ' from company ' . $this->data['company'] . ' has expired.');
+    }
+
+    public function toDatabase($notifiable)
+    {
+        return [
+            'test' => 2
+        ];
     }
 
     /**
