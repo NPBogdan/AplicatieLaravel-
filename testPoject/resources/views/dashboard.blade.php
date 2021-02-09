@@ -7,9 +7,7 @@
 
     <!-- Ajax call-->
     {{$response}}
-    @php
-        echo date('Y-d-m');
-    @endphp
+
     <div class="py-12">
         <div class="grid grid-cols-2">
             <div class="max-w-4xl sm:px-6 lg:px-8">
