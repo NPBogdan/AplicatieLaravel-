@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Tool;
+use App\Models\User;
+use App\Policies\ToolPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -13,7 +16,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        // 'App\Models\Model' => 'App\Policies\ModelPolicy',
+        Tool::class => ToolPolicy::class
     ];
 
     /**
@@ -25,6 +28,10 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+//        Gate::before(function(User $user){
+//            if($user->id === 1){ //admin
+//                return true;
+//            }
+//        });
     }
 }
