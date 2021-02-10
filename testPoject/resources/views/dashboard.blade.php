@@ -19,6 +19,7 @@
     <!-- The forms-->
     <div class="container px-6 py-11">
         <div class="grid grid-cols-2">
+            @can("create",App\Models\Tool::class)
             <!-- Tool form -->
             <div class="max-w-4xl sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -35,8 +36,10 @@
                     </div>
                 </div>
             </div>
+            @endcan
             <!-- Attribute form -->
-            <div class="max-w-7xl sm:px-6 lg:px-8">
+            @can("create",App\Models\Attribute::class)
+                <div class="max-w-7xl sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200">
                         <p class="fs-2">Attribute</p>
@@ -83,6 +86,7 @@
                     </div>
                 </div>
             </div>
+            @endcan
         </div>
     </div>
 

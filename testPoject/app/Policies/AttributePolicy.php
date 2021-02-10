@@ -2,12 +2,12 @@
 
 namespace App\Policies;
 
-use App\Models\Tool;
+use App\Models\Attribute;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Support\Facades\Auth;
 
-class ToolPolicy
+class AttributePolicy
 {
     use HandlesAuthorization;
 
@@ -29,12 +29,12 @@ class ToolPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Tool  $tool
+     * @param  \App\Models\Attribute  $attribute
      * @return mixed
      */
-    public function view(User $user, Tool $tool)
+    public function view(User $user, Attribute $attribute)
     {
-        return $user->id === $tool->user_id;
+        return $user->id === $attribute->object->user_id;
     }
 
     /**
@@ -46,7 +46,6 @@ class ToolPolicy
     public function create(User $user)
     {
         $authUser = Auth::user();
-
         return $user->id == $authUser->id;
     }
 }
