@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Attribute;
 use App\Models\Tool;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
@@ -22,6 +24,5 @@ class DashboardController extends Controller
             $userObjects = Tool::where('user_id', $user->id)->get();
         }
         return view('dashboard',compact(['userObjects','response']));
-
     }
 }

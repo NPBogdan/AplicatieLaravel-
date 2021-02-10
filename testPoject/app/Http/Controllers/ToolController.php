@@ -47,7 +47,7 @@ class ToolController extends Controller
         $tool->user_id = Auth::user()->id;
         $tool->save();
 
-        return redirect()->action([AttributeController::class, 'create'])->with('object_id',);
+        return redirect()->action([DashboardController::class, 'index']);
     }
 
     /**

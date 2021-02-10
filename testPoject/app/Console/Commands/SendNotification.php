@@ -50,8 +50,8 @@ class SendNotification extends Command
                 'company' => $attribute->company
                 ]
             ));
-//            $attribute->active = 0;
-//            $attribute->save();
+           $attribute->active = 0;
+           $attribute->save();
         }
     }
 }

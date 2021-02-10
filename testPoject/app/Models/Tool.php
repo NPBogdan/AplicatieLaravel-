@@ -11,7 +11,7 @@ class Tool extends Model
     protected $table = "objects";
 
     public function attributes(){
-        return $this->hasMany(Attribute::class);
+        return $this->hasMany(Attribute::class,'object_id');
     }
 
     public function user(){
