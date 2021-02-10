@@ -53,5 +53,4 @@ class User extends Authenticatable
     {
         return $this->hasManyThrough(Attribute::class, Tool::class, 'user_id', 'object_id');
     }
-
 }
