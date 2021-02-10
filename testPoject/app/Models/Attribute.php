@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Attribute extends Model
 {
     use HasFactory;
+    public function object(){
+        return $this->belongsTo(Tool::class);
+    }
 }

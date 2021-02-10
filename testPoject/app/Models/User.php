@@ -40,4 +40,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function objects(){
+        return $this->hasMany(Tool::class);
+    }
+
+    //Check if this user is admin
+    public function isAdministrator() {
+        return $this->is_admin;
+    }
+
+    public function attributes()
+    {
+        return $this->hasManyThrough(Attribute::class, Tool::class, 'user_id', 'object_id');
+    }
 }

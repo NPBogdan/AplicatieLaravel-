@@ -15,7 +15,17 @@ class CreateAttributesTable extends Migration
     {
         Schema::create('attributes', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger("object_id");
+            $table->string("name");
+            $table->string("company");
+            $table->string("representative_name");
+            $table->integer("nr_telephone_representative");
+            $table->date("validity_start_date");
+            $table->date("expiration_date");
+            $table->boolean("active");
             $table->timestamps();
+
+            $table->foreign("object_id")->references("id")->on("objects")->onDelete("cascade");
         });
     }
 
