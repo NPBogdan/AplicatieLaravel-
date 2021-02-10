@@ -46,12 +46,14 @@ class SendNotification extends Command
         foreach ($attributes as $attribute){
             $user = $attribute->object->user;
             $user->notify(new AttributeExpired([
+                'user_id' => $user->id,
                 'name' => $attribute->name,
-                'company' => $attribute->company
+                'company' => $attribute->company,
+                'validity_start_date'=> $attribute->validity_start_date
                 ]
             ));
-//            $attribute->active = 0;
-//            $attribute->save();
+            $attribute->active = 0;
+            $attribute->save();
         }
     }
 }

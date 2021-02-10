@@ -49,5 +49,8 @@ class User extends Authenticatable
         return $this->is_admin;
     }
 
-
+    public function attributes()
+    {
+        return $this->hasManyThrough(Attribute::class, Tool::class, 'user_id', 'object_id');
+    }
 }

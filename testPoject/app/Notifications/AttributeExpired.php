@@ -51,7 +51,11 @@ class AttributeExpired extends Notification
     public function toDatabase($notifiable)
     {
         return [
-            'test' => 2
+            'user_id' => $this->data['user_id'],
+            'company' => $this->data['company'],
+            'name' => $this->data['name'],
+            'created' => date('Y-m-d'),
+            'validity_start_date'=> $this->data['validity_start_date']
         ];
     }
 

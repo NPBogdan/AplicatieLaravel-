@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreAttributeRequest;
-use App\Models\Attribute;
+use App\Models\Notification;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Auth;
 
-class AttributeController extends Controller
+class NotificationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,6 +15,18 @@ class AttributeController extends Controller
      */
     public function index()
     {
+        //Get all notifications from current auth user
+        $user = Auth::user();
+        if($user->isAdministrator()){
+            $notifications = Notification::all()->sortByDesc('created_at');
+        }
+        else{
+            $notifications = Notification::where('notifiable_id', $user->id)->orderByDesc('created_at')->get();
+        }
+
+        //Mark all notifications as read
+        $user->unreadNotifications()->update(['read_at' => now()]);
+        return view('notification',compact('notifications'));
     }
 
     /**
@@ -25,8 +36,7 @@ class AttributeController extends Controller
      */
     public function create()
     {
-        $response = Http::get('http://api.ipify.org')->body();
-        return view("attribute",compact('response'));
+        //
     }
 
     /**
@@ -35,19 +45,9 @@ class AttributeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreAttributeRequest $request)
+    public function store(Request $request)
     {
-        $attribute = new Attribute();
-        $attribute->object_id = $request->object_id;
-        $attribute->name = $request->name;
-        $attribute->company = $request->company;
-        $attribute->representative_name = $request->representative_name;
-        $attribute->nr_telephone_representative = $request->nr_telephone_representative;
-        $attribute->validity_start_date = $request->validity_start_date;
-        $attribute->expiration_date = $request->expiration_date;
-        $attribute->active = 1; //Default is 1
-        $attribute->save();
-        return back();
+        //
     }
 
     /**

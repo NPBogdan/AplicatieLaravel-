@@ -1201,7 +1201,7 @@
           const { valueMutated } = membrane;
           const { configurable } = descriptor;
           // We have to check for value in descriptor
-          // because Tool.freeze(proxy) calls this method
+          // because Object.freeze(proxy) calls this method
           // with only { configurable: false, writeable: false }
           // Additionally, method will only be called with writeable:false
           // if the descriptor has a value, as opposed to getter/setter
@@ -3528,20 +3528,20 @@ function isNumber(val) {
 }
 
 /**
- * Determine if a value is an Tool
+ * Determine if a value is an Object
  *
  * @param {Object} val The value to test
- * @returns {boolean} True if value is an Tool, otherwise false
+ * @returns {boolean} True if value is an Object, otherwise false
  */
 function isObject(val) {
   return val !== null && typeof val === 'object';
 }
 
 /**
- * Determine if a value is a plain Tool
+ * Determine if a value is a plain Object
  *
  * @param {Object} val The value to test
- * @return {boolean} True if value is a plain Tool, otherwise false
+ * @return {boolean} True if value is a plain Object, otherwise false
  */
 function isPlainObject(val) {
   if (toString.call(val) !== '[object Object]') {
@@ -3650,12 +3650,12 @@ function isStandardBrowserEnv() {
 }
 
 /**
- * Iterate over an Array or an Tool invoking a function for each item.
+ * Iterate over an Array or an Object invoking a function for each item.
  *
  * If `obj` is an Array callback will be called passing
  * the value, index, and complete array for each item.
  *
- * If 'obj' is an Tool callback will be called passing
+ * If 'obj' is an Object callback will be called passing
  * the value, key, and complete object for each property.
  *
  * @param {Object|Array} obj The object to iterate
@@ -3702,7 +3702,7 @@ function forEach(obj, fn) {
  * console.log(result.foo); // outputs 456
  * ```
  *
- * @param {Object} obj1 Tool to merge
+ * @param {Object} obj1 Object to merge
  * @returns {Object} Result of all merge properties
  */
 function merge(/* obj1, obj2, obj3, ... */) {
@@ -3925,7 +3925,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
     ['rearg', WRAP_REARG_FLAG]
   ];
 
-  /** `Tool#toString` result references. */
+  /** `Object#toString` result references. */
   var argsTag = '[object Arguments]',
       arrayTag = '[object Array]',
       asyncTag = '[object AsyncFunction]',
@@ -5284,7 +5284,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      */
     var nativeObjectToString = objectProto.toString;
 
-    /** Used to infer the `Tool` constructor. */
+    /** Used to infer the `Object` constructor. */
     var objectCtorString = funcToString.call(Object);
 
     /** Used to restore the original `_` reference in `_.noConflict`. */
@@ -9676,7 +9676,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
         var objCtor = object.constructor,
             othCtor = other.constructor;
 
-        // Non `Tool` object instances with different constructors are not equal.
+        // Non `Object` object instances with different constructors are not equal.
         if (objCtor != othCtor &&
             ('constructor' in object && 'constructor' in other) &&
             !(typeof objCtor == 'function' && objCtor instanceof objCtor &&
@@ -10365,7 +10365,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
 
     /**
      * This function is like
-     * [`Tool.keys`](http://ecma-international.org/ecma-262/7.0/#sec-object.keys)
+     * [`Object.keys`](http://ecma-international.org/ecma-262/7.0/#sec-object.keys)
      * except that it includes inherited enumerable properties.
      *
      * @private
@@ -10383,7 +10383,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
     }
 
     /**
-     * Converts `value` to a string using `Tool.prototype.toString`.
+     * Converts `value` to a string using `Object.prototype.toString`.
      *
      * @private
      * @param {*} value The value to convert.
@@ -10685,7 +10685,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @category Array
      * @param {Array} array The array to process.
      * @param {number} [size=1] The length of each chunk
-     * @param- {Tool} [guard] Enables use as an iteratee for methods like `_.map`.
+     * @param- {Object} [guard] Enables use as an iteratee for methods like `_.map`.
      * @returns {Array} Returns the new array of chunks.
      * @example
      *
@@ -10887,7 +10887,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @category Array
      * @param {Array} array The array to query.
      * @param {number} [n=1] The number of elements to drop.
-     * @param- {Tool} [guard] Enables use as an iteratee for methods like `_.map`.
+     * @param- {Object} [guard] Enables use as an iteratee for methods like `_.map`.
      * @returns {Array} Returns the slice of `array`.
      * @example
      *
@@ -10921,7 +10921,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @category Array
      * @param {Array} array The array to query.
      * @param {number} [n=1] The number of elements to drop.
-     * @param- {Tool} [guard] Enables use as an iteratee for methods like `_.map`.
+     * @param- {Object} [guard] Enables use as an iteratee for methods like `_.map`.
      * @returns {Array} Returns the slice of `array`.
      * @example
      *
@@ -12009,7 +12009,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @category Array
      * @param {Array} array The array to query.
      * @param {number} [n=1] The number of elements to take.
-     * @param- {Tool} [guard] Enables use as an iteratee for methods like `_.map`.
+     * @param- {Object} [guard] Enables use as an iteratee for methods like `_.map`.
      * @returns {Array} Returns the slice of `array`.
      * @example
      *
@@ -12042,7 +12042,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @category Array
      * @param {Array} array The array to query.
      * @param {number} [n=1] The number of elements to take.
-     * @param- {Tool} [guard] Enables use as an iteratee for methods like `_.map`.
+     * @param- {Object} [guard] Enables use as an iteratee for methods like `_.map`.
      * @returns {Array} Returns the slice of `array`.
      * @example
      *
@@ -12957,7 +12957,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @category Collection
      * @param {Array|Object} collection The collection to iterate over.
      * @param {Function} [predicate=_.identity] The function invoked per iteration.
-     * @param- {Tool} [guard] Enables use as an iteratee for methods like `_.map`.
+     * @param- {Object} [guard] Enables use as an iteratee for methods like `_.map`.
      * @returns {boolean} Returns `true` if all elements pass the predicate check,
      *  else `false`.
      * @example
@@ -13275,7 +13275,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @param {Array|Object|string} collection The collection to inspect.
      * @param {*} value The value to search for.
      * @param {number} [fromIndex=0] The index to search from.
-     * @param- {Tool} [guard] Enables use as an iteratee for methods like `_.reduce`.
+     * @param- {Object} [guard] Enables use as an iteratee for methods like `_.reduce`.
      * @returns {boolean} Returns `true` if `value` is found, else `false`.
      * @example
      *
@@ -13431,7 +13431,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @param {Array[]|Function[]|Object[]|string[]} [iteratees=[_.identity]]
      *  The iteratees to sort by.
      * @param {string[]} [orders] The sort orders of `iteratees`.
-     * @param- {Tool} [guard] Enables use as an iteratee for methods like `_.reduce`.
+     * @param- {Object} [guard] Enables use as an iteratee for methods like `_.reduce`.
      * @returns {Array} Returns the new sorted array.
      * @example
      *
@@ -13641,7 +13641,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @category Collection
      * @param {Array|Object} collection The collection to sample.
      * @param {number} [n=1] The number of elements to sample.
-     * @param- {Tool} [guard] Enables use as an iteratee for methods like `_.map`.
+     * @param- {Object} [guard] Enables use as an iteratee for methods like `_.map`.
      * @returns {Array} Returns the random elements.
      * @example
      *
@@ -13727,7 +13727,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @category Collection
      * @param {Array|Object} collection The collection to iterate over.
      * @param {Function} [predicate=_.identity] The function invoked per iteration.
-     * @param- {Tool} [guard] Enables use as an iteratee for methods like `_.map`.
+     * @param- {Object} [guard] Enables use as an iteratee for methods like `_.map`.
      * @returns {boolean} Returns `true` if any element passes the predicate check,
      *  else `false`.
      * @example
@@ -13872,7 +13872,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @category Function
      * @param {Function} func The function to cap arguments for.
      * @param {number} [n=func.length] The arity cap.
-     * @param- {Tool} [guard] Enables use as an iteratee for methods like `_.map`.
+     * @param- {Object} [guard] Enables use as an iteratee for methods like `_.map`.
      * @returns {Function} Returns the new capped function.
      * @example
      *
@@ -14035,7 +14035,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @category Function
      * @param {Function} func The function to curry.
      * @param {number} [arity=func.length] The arity of `func`.
-     * @param- {Tool} [guard] Enables use as an iteratee for methods like `_.map`.
+     * @param- {Object} [guard] Enables use as an iteratee for methods like `_.map`.
      * @returns {Function} Returns the new curried function.
      * @example
      *
@@ -14080,7 +14080,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @category Function
      * @param {Function} func The function to curry.
      * @param {number} [arity=func.length] The arity of `func`.
-     * @param- {Tool} [guard] Enables use as an iteratee for methods like `_.map`.
+     * @param- {Object} [guard] Enables use as an iteratee for methods like `_.map`.
      * @returns {Function} Returns the new curried function.
      * @example
      *
@@ -14869,7 +14869,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * **Note:** This method is loosely based on the
      * [structured clone algorithm](https://mdn.io/Structured_clone_algorithm)
      * and supports cloning arrays, array buffers, booleans, date objects, maps,
-     * numbers, `Tool` objects, regexes, sets, strings, symbols, and typed
+     * numbers, `Object` objects, regexes, sets, strings, symbols, and typed
      * arrays. The own enumerable properties of `arguments` objects are cloned
      * as plain objects. An empty object is returned for uncloneable values such
      * as error objects, functions, DOM nodes, and WeakMaps.
@@ -15038,7 +15038,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * _.eq('a', 'a');
      * // => true
      *
-     * _.eq('a', Tool('a'));
+     * _.eq('a', Object('a'));
      * // => false
      *
      * _.eq(NaN, NaN);
@@ -15368,8 +15368,8 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * equivalent.
      *
      * **Note:** This method supports comparing arrays, array buffers, booleans,
-     * date objects, error objects, maps, numbers, `Tool` objects, regexes,
-     * sets, strings, symbols, and typed arrays. `Tool` objects are compared
+     * date objects, error objects, maps, numbers, `Object` objects, regexes,
+     * sets, strings, symbols, and typed arrays. `Object` objects are compared
      * by their own, not inherited, enumerable properties. Functions and DOM
      * nodes are compared by strict equality, i.e. `===`.
      *
@@ -15511,7 +15511,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
       if (!isObject(value)) {
         return false;
       }
-      // The use of `Tool#toString` avoids issues with the `typeof` operator
+      // The use of `Object#toString` avoids issues with the `typeof` operator
       // in Safari 9 which returns 'object' for typed arrays and other constructors.
       var tag = baseGetTag(value);
       return tag == funcTag || tag == genTag || tag == asyncTag || tag == proxyTag;
@@ -15581,7 +15581,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
     /**
      * Checks if `value` is the
      * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
-     * of `Tool`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
+     * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
      *
      * @static
      * @memberOf _
@@ -15870,7 +15870,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
 
     /**
      * Checks if `value` is a plain object, that is, an object created by the
-     * `Tool` constructor or one with a `[[Prototype]]` of `null`.
+     * `Object` constructor or one with a `[[Prototype]]` of `null`.
      *
      * @static
      * @memberOf _
@@ -15893,7 +15893,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * _.isPlainObject({ 'x': 0, 'y': 0 });
      * // => true
      *
-     * _.isPlainObject(Tool.create(null));
+     * _.isPlainObject(Object.create(null));
      * // => true
      */
     function isPlainObject(value) {
@@ -16429,12 +16429,12 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * Subsequent sources overwrite property assignments of previous sources.
      *
      * **Note:** This method mutates `object` and is loosely based on
-     * [`Tool.assign`](https://mdn.io/Object/assign).
+     * [`Object.assign`](https://mdn.io/Object/assign).
      *
      * @static
      * @memberOf _
      * @since 0.10.0
-     * @category Tool
+     * @category Object
      * @param {Object} object The destination object.
      * @param {...Object} [sources] The source objects.
      * @returns {Object} Returns `object`.
@@ -16477,7 +16477,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @memberOf _
      * @since 4.0.0
      * @alias extend
-     * @category Tool
+     * @category Object
      * @param {Object} object The destination object.
      * @param {...Object} [sources] The source objects.
      * @returns {Object} Returns `object`.
@@ -16514,7 +16514,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @memberOf _
      * @since 4.0.0
      * @alias extendWith
-     * @category Tool
+     * @category Object
      * @param {Object} object The destination object.
      * @param {...Object} sources The source objects.
      * @param {Function} [customizer] The function to customize assigned values.
@@ -16546,7 +16546,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @static
      * @memberOf _
      * @since 4.0.0
-     * @category Tool
+     * @category Object
      * @param {Object} object The destination object.
      * @param {...Object} sources The source objects.
      * @param {Function} [customizer] The function to customize assigned values.
@@ -16573,7 +16573,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @static
      * @memberOf _
      * @since 1.0.0
-     * @category Tool
+     * @category Object
      * @param {Object} object The object to iterate over.
      * @param {...(string|string[])} [paths] The property paths to pick.
      * @returns {Array} Returns the picked values.
@@ -16594,7 +16594,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @static
      * @memberOf _
      * @since 2.3.0
-     * @category Tool
+     * @category Object
      * @param {Object} prototype The object to inherit from.
      * @param {Object} [properties] The properties to assign to the object.
      * @returns {Object} Returns the new object.
@@ -16636,7 +16636,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @static
      * @since 0.1.0
      * @memberOf _
-     * @category Tool
+     * @category Object
      * @param {Object} object The destination object.
      * @param {...Object} [sources] The source objects.
      * @returns {Object} Returns `object`.
@@ -16686,7 +16686,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @static
      * @memberOf _
      * @since 3.10.0
-     * @category Tool
+     * @category Object
      * @param {Object} object The destination object.
      * @param {...Object} [sources] The source objects.
      * @returns {Object} Returns `object`.
@@ -16708,7 +16708,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @static
      * @memberOf _
      * @since 1.1.0
-     * @category Tool
+     * @category Object
      * @param {Object} object The object to inspect.
      * @param {Function} [predicate=_.identity] The function invoked per iteration.
      * @returns {string|undefined} Returns the key of the matched element,
@@ -16747,7 +16747,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @static
      * @memberOf _
      * @since 2.0.0
-     * @category Tool
+     * @category Object
      * @param {Object} object The object to inspect.
      * @param {Function} [predicate=_.identity] The function invoked per iteration.
      * @returns {string|undefined} Returns the key of the matched element,
@@ -16788,7 +16788,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @static
      * @memberOf _
      * @since 0.3.0
-     * @category Tool
+     * @category Object
      * @param {Object} object The object to iterate over.
      * @param {Function} [iteratee=_.identity] The function invoked per iteration.
      * @returns {Object} Returns `object`.
@@ -16820,7 +16820,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @static
      * @memberOf _
      * @since 2.0.0
-     * @category Tool
+     * @category Object
      * @param {Object} object The object to iterate over.
      * @param {Function} [iteratee=_.identity] The function invoked per iteration.
      * @returns {Object} Returns `object`.
@@ -16854,7 +16854,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @static
      * @memberOf _
      * @since 0.3.0
-     * @category Tool
+     * @category Object
      * @param {Object} object The object to iterate over.
      * @param {Function} [iteratee=_.identity] The function invoked per iteration.
      * @returns {Object} Returns `object`.
@@ -16884,7 +16884,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @static
      * @memberOf _
      * @since 2.0.0
-     * @category Tool
+     * @category Object
      * @param {Object} object The object to iterate over.
      * @param {Function} [iteratee=_.identity] The function invoked per iteration.
      * @returns {Object} Returns `object`.
@@ -16914,7 +16914,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @static
      * @since 0.1.0
      * @memberOf _
-     * @category Tool
+     * @category Object
      * @param {Object} object The object to inspect.
      * @returns {Array} Returns the function names.
      * @see _.functionsIn
@@ -16941,7 +16941,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @static
      * @memberOf _
      * @since 4.0.0
-     * @category Tool
+     * @category Object
      * @param {Object} object The object to inspect.
      * @returns {Array} Returns the function names.
      * @see _.functions
@@ -16968,7 +16968,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @static
      * @memberOf _
      * @since 3.7.0
-     * @category Tool
+     * @category Object
      * @param {Object} object The object to query.
      * @param {Array|string} path The path of the property to get.
      * @param {*} [defaultValue] The value returned for `undefined` resolved values.
@@ -16997,7 +16997,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @static
      * @since 0.1.0
      * @memberOf _
-     * @category Tool
+     * @category Object
      * @param {Object} object The object to query.
      * @param {Array|string} path The path to check.
      * @returns {boolean} Returns `true` if `path` exists, else `false`.
@@ -17028,7 +17028,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @static
      * @memberOf _
      * @since 4.0.0
-     * @category Tool
+     * @category Object
      * @param {Object} object The object to query.
      * @param {Array|string} path The path to check.
      * @returns {boolean} Returns `true` if `path` exists, else `false`.
@@ -17060,7 +17060,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @static
      * @memberOf _
      * @since 0.7.0
-     * @category Tool
+     * @category Object
      * @param {Object} object The object to invert.
      * @returns {Object} Returns the new inverted object.
      * @example
@@ -17089,7 +17089,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @static
      * @memberOf _
      * @since 4.1.0
-     * @category Tool
+     * @category Object
      * @param {Object} object The object to invert.
      * @param {Function} [iteratee=_.identity] The iteratee invoked per element.
      * @returns {Object} Returns the new inverted object.
@@ -17124,7 +17124,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @static
      * @memberOf _
      * @since 4.0.0
-     * @category Tool
+     * @category Object
      * @param {Object} object The object to query.
      * @param {Array|string} path The path of the method to invoke.
      * @param {...*} [args] The arguments to invoke the method with.
@@ -17148,7 +17148,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @static
      * @since 0.1.0
      * @memberOf _
-     * @category Tool
+     * @category Object
      * @param {Object} object The object to query.
      * @returns {Array} Returns the array of property names.
      * @example
@@ -17178,7 +17178,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @static
      * @memberOf _
      * @since 3.0.0
-     * @category Tool
+     * @category Object
      * @param {Object} object The object to query.
      * @returns {Array} Returns the array of property names.
      * @example
@@ -17206,7 +17206,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @static
      * @memberOf _
      * @since 3.8.0
-     * @category Tool
+     * @category Object
      * @param {Object} object The object to iterate over.
      * @param {Function} [iteratee=_.identity] The function invoked per iteration.
      * @returns {Object} Returns the new mapped object.
@@ -17237,7 +17237,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @static
      * @memberOf _
      * @since 2.4.0
-     * @category Tool
+     * @category Object
      * @param {Object} object The object to iterate over.
      * @param {Function} [iteratee=_.identity] The function invoked per iteration.
      * @returns {Object} Returns the new mapped object.
@@ -17280,7 +17280,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @static
      * @memberOf _
      * @since 0.5.0
-     * @category Tool
+     * @category Object
      * @param {Object} object The destination object.
      * @param {...Object} [sources] The source objects.
      * @returns {Object} Returns `object`.
@@ -17313,7 +17313,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @static
      * @memberOf _
      * @since 4.0.0
-     * @category Tool
+     * @category Object
      * @param {Object} object The destination object.
      * @param {...Object} sources The source objects.
      * @param {Function} customizer The function to customize assigned values.
@@ -17345,7 +17345,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @static
      * @since 0.1.0
      * @memberOf _
-     * @category Tool
+     * @category Object
      * @param {Object} object The source object.
      * @param {...(string|string[])} [paths] The property paths to omit.
      * @returns {Object} Returns the new object.
@@ -17387,7 +17387,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @static
      * @memberOf _
      * @since 4.0.0
-     * @category Tool
+     * @category Object
      * @param {Object} object The source object.
      * @param {Function} [predicate=_.identity] The function invoked per property.
      * @returns {Object} Returns the new object.
@@ -17408,7 +17408,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @static
      * @since 0.1.0
      * @memberOf _
-     * @category Tool
+     * @category Object
      * @param {Object} object The source object.
      * @param {...(string|string[])} [paths] The property paths to pick.
      * @returns {Object} Returns the new object.
@@ -17430,7 +17430,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @static
      * @memberOf _
      * @since 4.0.0
-     * @category Tool
+     * @category Object
      * @param {Object} object The source object.
      * @param {Function} [predicate=_.identity] The function invoked per property.
      * @returns {Object} Returns the new object.
@@ -17462,7 +17462,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @static
      * @since 0.1.0
      * @memberOf _
-     * @category Tool
+     * @category Object
      * @param {Object} object The object to query.
      * @param {Array|string} path The path of the property to resolve.
      * @param {*} [defaultValue] The value returned for `undefined` resolved values.
@@ -17516,7 +17516,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @static
      * @memberOf _
      * @since 3.7.0
-     * @category Tool
+     * @category Object
      * @param {Object} object The object to modify.
      * @param {Array|string} path The path of the property to set.
      * @param {*} value The value to set.
@@ -17548,7 +17548,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @static
      * @memberOf _
      * @since 4.0.0
-     * @category Tool
+     * @category Object
      * @param {Object} object The object to modify.
      * @param {Array|string} path The path of the property to set.
      * @param {*} value The value to set.
@@ -17558,7 +17558,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      *
      * var object = {};
      *
-     * _.setWith(object, '[0][1]', 'a', Tool);
+     * _.setWith(object, '[0][1]', 'a', Object);
      * // => { '0': { '1': 'a' } }
      */
     function setWith(object, path, value, customizer) {
@@ -17575,7 +17575,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @memberOf _
      * @since 4.0.0
      * @alias entries
-     * @category Tool
+     * @category Object
      * @param {Object} object The object to query.
      * @returns {Array} Returns the key-value pairs.
      * @example
@@ -17601,7 +17601,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @memberOf _
      * @since 4.0.0
      * @alias entriesIn
-     * @category Tool
+     * @category Object
      * @param {Object} object The object to query.
      * @returns {Array} Returns the key-value pairs.
      * @example
@@ -17630,7 +17630,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @static
      * @memberOf _
      * @since 1.3.0
-     * @category Tool
+     * @category Object
      * @param {Object} object The object to iterate over.
      * @param {Function} [iteratee=_.identity] The function invoked per iteration.
      * @param {*} [accumulator] The custom accumulator value.
@@ -17679,7 +17679,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @static
      * @memberOf _
      * @since 4.0.0
-     * @category Tool
+     * @category Object
      * @param {Object} object The object to modify.
      * @param {Array|string} path The path of the property to unset.
      * @returns {boolean} Returns `true` if the property is deleted, else `false`.
@@ -17712,7 +17712,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @static
      * @memberOf _
      * @since 4.6.0
-     * @category Tool
+     * @category Object
      * @param {Object} object The object to modify.
      * @param {Array|string} path The path of the property to set.
      * @param {Function} updater The function to produce the updated value.
@@ -17744,7 +17744,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @static
      * @memberOf _
      * @since 4.6.0
-     * @category Tool
+     * @category Object
      * @param {Object} object The object to modify.
      * @param {Array|string} path The path of the property to set.
      * @param {Function} updater The function to produce the updated value.
@@ -17754,7 +17754,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      *
      * var object = {};
      *
-     * _.updateWith(object, '[0][1]', _.constant('a'), Tool);
+     * _.updateWith(object, '[0][1]', _.constant('a'), Object);
      * // => { '0': { '1': 'a' } }
      */
     function updateWith(object, path, updater, customizer) {
@@ -17770,7 +17770,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @static
      * @since 0.1.0
      * @memberOf _
-     * @category Tool
+     * @category Object
      * @param {Object} object The object to query.
      * @returns {Array} Returns the array of property values.
      * @example
@@ -17801,7 +17801,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @static
      * @memberOf _
      * @since 3.0.0
-     * @category Tool
+     * @category Object
      * @param {Object} object The object to query.
      * @returns {Array} Returns the array of property values.
      * @example
@@ -18327,7 +18327,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @category String
      * @param {string} string The string to convert.
      * @param {number} [radix=10] The radix to interpret `value` by.
-     * @param- {Tool} [guard] Enables use as an iteratee for methods like `_.map`.
+     * @param- {Object} [guard] Enables use as an iteratee for methods like `_.map`.
      * @returns {number} Returns the converted integer.
      * @example
      *
@@ -18355,7 +18355,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @category String
      * @param {string} [string=''] The string to repeat.
      * @param {number} [n=1] The number of times to repeat the string.
-     * @param- {Tool} [guard] Enables use as an iteratee for methods like `_.map`.
+     * @param- {Object} [guard] Enables use as an iteratee for methods like `_.map`.
      * @returns {string} Returns the repeated string.
      * @example
      *
@@ -18561,7 +18561,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      *  The sourceURL of the compiled template.
      * @param {string} [options.variable='obj']
      *  The data object variable name.
-     * @param- {Tool} [guard] Enables use as an iteratee for methods like `_.map`.
+     * @param- {Object} [guard] Enables use as an iteratee for methods like `_.map`.
      * @returns {Function} Returns the compiled template function.
      * @example
      *
@@ -18800,7 +18800,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @category String
      * @param {string} [string=''] The string to trim.
      * @param {string} [chars=whitespace] The characters to trim.
-     * @param- {Tool} [guard] Enables use as an iteratee for methods like `_.map`.
+     * @param- {Object} [guard] Enables use as an iteratee for methods like `_.map`.
      * @returns {string} Returns the trimmed string.
      * @example
      *
@@ -18838,7 +18838,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @category String
      * @param {string} [string=''] The string to trim.
      * @param {string} [chars=whitespace] The characters to trim.
-     * @param- {Tool} [guard] Enables use as an iteratee for methods like `_.map`.
+     * @param- {Object} [guard] Enables use as an iteratee for methods like `_.map`.
      * @returns {string} Returns the trimmed string.
      * @example
      *
@@ -18871,7 +18871,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @category String
      * @param {string} [string=''] The string to trim.
      * @param {string} [chars=whitespace] The characters to trim.
-     * @param- {Tool} [guard] Enables use as an iteratee for methods like `_.map`.
+     * @param- {Object} [guard] Enables use as an iteratee for methods like `_.map`.
      * @returns {string} Returns the trimmed string.
      * @example
      *
@@ -19066,7 +19066,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @category String
      * @param {string} [string=''] The string to inspect.
      * @param {RegExp|string} [pattern] The pattern to match words.
-     * @param- {Tool} [guard] Enables use as an iteratee for methods like `_.map`.
+     * @param- {Object} [guard] Enables use as an iteratee for methods like `_.map`.
      * @returns {Array} Returns the words of `string`.
      * @example
      *
@@ -19688,7 +19688,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * truthy when invoked with the arguments it receives.
      *
      * Following shorthands are possible for providing predicates.
-     * Pass an `Tool` and it will be used as an parameter for `_.matches` to create the predicate.
+     * Pass an `Object` and it will be used as an parameter for `_.matches` to create the predicate.
      * Pass an `Array` of parameters for `_.matchesProperty` and the predicate will be created using them.
      *
      * @static
@@ -19718,7 +19718,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * truthy when invoked with the arguments it receives.
      *
      * Following shorthands are possible for providing predicates.
-     * Pass an `Tool` and it will be used as an parameter for `_.matches` to create the predicate.
+     * Pass an `Object` and it will be used as an parameter for `_.matches` to create the predicate.
      * Pass an `Array` of parameters for `_.matchesProperty` and the predicate will be created using them.
      *
      * @static
@@ -21203,7 +21203,7 @@ process.umask = function() { return 0; };
 /************************************************************************/
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
-/******/
+/******/ 	
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/ 		// Check if module is in cache
@@ -21216,20 +21216,20 @@ process.umask = function() { return 0; };
 /******/ 			loaded: false,
 /******/ 			exports: {}
 /******/ 		};
-/******/
+/******/ 	
 /******/ 		// Execute the module function
 /******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
+/******/ 	
 /******/ 		// Flag the module as loaded
 /******/ 		module.loaded = true;
-/******/
+/******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/
+/******/ 	
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = __webpack_modules__;
-/******/
+/******/ 	
 /******/ 	// the startup function
 /******/ 	// It's empty as some runtime module handles the default behavior
 /******/ 	__webpack_require__.x = x => {};
@@ -21245,12 +21245,12 @@ process.umask = function() { return 0; };
 /******/ 			}
 /******/ 		})();
 /******/ 	})();
-/******/
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
-/******/
+/******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports
@@ -21261,7 +21261,7 @@ process.umask = function() { return 0; };
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
 /******/ 	})();
-/******/
+/******/ 	
 /******/ 	/* webpack/runtime/node module decorator */
 /******/ 	(() => {
 /******/ 		__webpack_require__.nmd = (module) => {
@@ -21270,34 +21270,34 @@ process.umask = function() { return 0; };
 /******/ 			return module;
 /******/ 		};
 /******/ 	})();
-/******/
+/******/ 	
 /******/ 	/* webpack/runtime/jsonp chunk loading */
 /******/ 	(() => {
 /******/ 		// no baseURI
-/******/
+/******/ 		
 /******/ 		// object to store loaded and loading chunks
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// Promise = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
 /******/ 			"/js/app": 0
 /******/ 		};
-/******/
+/******/ 		
 /******/ 		var deferredModules = [
 /******/ 			["./resources/js/app.js"],
 /******/ 			["./resources/css/app.css"]
 /******/ 		];
 /******/ 		// no chunk on demand loading
-/******/
+/******/ 		
 /******/ 		// no prefetching
-/******/
+/******/ 		
 /******/ 		// no preloaded
-/******/
+/******/ 		
 /******/ 		// no HMR
-/******/
+/******/ 		
 /******/ 		// no HMR manifest
-/******/
+/******/ 		
 /******/ 		var checkDeferredModules = x => {};
-/******/
+/******/ 		
 /******/ 		// install a JSONP callback for chunk loading
 /******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
 /******/ 			var [chunkIds, moreModules, runtime, executeModules] = data;
@@ -21321,18 +21321,18 @@ process.umask = function() { return 0; };
 /******/ 			while(resolves.length) {
 /******/ 				resolves.shift()();
 /******/ 			}
-/******/
+/******/ 		
 /******/ 			// add entry modules from loaded chunk to deferred list
 /******/ 			if(executeModules) deferredModules.push.apply(deferredModules, executeModules);
-/******/
+/******/ 		
 /******/ 			// run deferred modules when all chunks ready
 /******/ 			return checkDeferredModules();
 /******/ 		}
-/******/
+/******/ 		
 /******/ 		var chunkLoadingGlobal = self["webpackChunk"] = self["webpackChunk"] || [];
 /******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
 /******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
-/******/
+/******/ 		
 /******/ 		function checkDeferredModulesImpl() {
 /******/ 			var result;
 /******/ 			for(var i = 0; i < deferredModules.length; i++) {
@@ -21360,7 +21360,7 @@ process.umask = function() { return 0; };
 /******/ 			return (checkDeferredModules = checkDeferredModulesImpl)();
 /******/ 		};
 /******/ 	})();
-/******/
+/******/ 	
 /************************************************************************/
 /******/ 	// run startup
 /******/ 	__webpack_require__.x();
