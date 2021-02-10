@@ -26,5 +26,5 @@ Route::get('/dashboard', [DashboardController::class,'index'])->middleware(['aut
 Route::resource('tools',ToolController::class);
 Route::resource('attributes',AttributeController::class);
 
-Route::get('/notification',[NotificationController::class,'index'])->middleware(['auth'])->name('notifications');
+Route::get('/notifications',[NotificationController::class,'index'])->middleware(['auth'])->name('notifications');
 require __DIR__.'/auth.php';

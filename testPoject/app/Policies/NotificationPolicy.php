@@ -2,12 +2,12 @@
 
 namespace App\Policies;
 
+use App\Models\Notification;
 use App\Models\Tool;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Illuminate\Support\Facades\Auth;
 
-class ToolPolicy
+class NotificationPolicy
 {
     use HandlesAuthorization;
 
@@ -26,27 +26,13 @@ class ToolPolicy
     }
 
     /**
-     * Determine whether the user can view the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Tool  $tool
-     * @return mixed
-     */
-    public function view(User $user, Tool $tool)
-    {
-        return $user->id === $tool->user_id;
-    }
-
-    /**
-     * Determine whether the user can create models.
+     * Determine whether the user can view any models.
      *
      * @param  \App\Models\User  $user
      * @return mixed
      */
-    public function create(User $user)
+    public function viewAny(User $user)
     {
-        $authUser = Auth::user();
-
-        return $user->id == $authUser->id;
+        return true;
     }
 }
